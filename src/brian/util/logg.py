@@ -8,7 +8,7 @@ logger = logging.getLogger(__name__)
 
 # abs deez nuts
 def logInfo(message):
-    logging.info("\n\n*#*#*#*#*#*       \n" + message + "\n")
+    logging.info("\n\n*#*#*#*#*#*\n" + message + "\n")
 
 def logError(message, exci=False):
-    logging.error("*#*#*#*#*#*" + message, exc_info=exci)
+    logging.error("\n\n*#*#*#*#*#*\n" + message + "\n", exc_info=exci)
