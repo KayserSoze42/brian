@@ -4,6 +4,7 @@ from collections import defaultdict
 from typing import Union, List, Dict, Any
 
 from anthropic import AsyncAnthropic
+from anthropic.resources.messages import messages
 
 from brian.util.logg import logInfo, logError
 from brian.configs.prompts import SYSTEM_CLAUDE
@@ -29,17 +30,47 @@ class ClaudeController:
 
         self.claudeClient = AsyncAnthropic(api_key=self.ANTHROPIC_API_KEY)
 
-    async def getClouderer(self, prompt: Union[str, List[Dict[str, Any]]]) -> str:
+    def messagesToClaudeContent(self, messages: Union[str, List[Dict[str, Any]]]) -> List[Dict[str, Any]]:
+        """
+        voodoo
+        """
+        content = []
+
+        content.append(
+                {
+                    "":"",
+                    "": messages
+                }
+        )
+
+        return content
+
+    def messagesToClaudePrompt(self, messages: Union[str, List[Dict[str, Any]]]) -> List[Any]: # any's got a gun!
+        """
+        what else should i say, i love el ayyyy
+        """
+
+        prompt = []
+
+        prompt.append(
+                {
+                    "role": "user",
+                    "content": self.messagesToClaudeContent(messages)
+                }
+        )
+
+        return prompt
+
+
+    async def getClouderer(self, messages: Union[str, List[Dict[str, Any]]]) -> str:
         """
         idk, juju voodoo ppl
+        what we done something something
+        claude, give me the lyrics to voodoo ppl
         """
-
         msgs = []
 
-        msgs.append({
-            "role": "user",
-            "content": prompt
-            })
+        msgs = [*self.messagesToClaudePrompt(messages)]
 
         for attempt in range(self.MAX_RETRIES):
 

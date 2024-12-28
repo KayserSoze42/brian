@@ -114,7 +114,14 @@ async def handleText(message: types.Message):
 
         userID = getUserID(message)
 
-        response = "" # claude be grok-king some foss ai here l8r
+        if message.text:
+
+            response = await claudeController.getClouderer(
+                message.text
+            ) # claude be grok-king some foss ai here l8r
+
+        else:
+            response = "oh no, wait.."
 
         await message.answer(response)
 

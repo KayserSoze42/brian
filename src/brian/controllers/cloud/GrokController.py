@@ -12,15 +12,15 @@ class GrokController:
 
     def __init__(self):
 
-        GROK_API_KEY = getenv("GROK_API_KEY")
+        X_AI_API_KEY = getenv("X_AI_API_KEY")
 
-        if GROK_API_KEY is None:
+        if X_AI_API_KEY is None:
             logError("error getting grok api key from ev")
             raise
 
         self.GROK_MODEL = "grok-2-1212" # is-even harder here for noer
 
-        self.grokClient = AsyncAnthropic(api_key=GROK_API_KEY, base_url="https://api.x.ai")
+        self.grokClient = AsyncAnthropic(api_key=X_AI_API_KEY, base_url="https://api.x.ai")
 
         self.MAX_RETRIES = 3
         self.MAX_HISTORY = 10
