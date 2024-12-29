@@ -6,8 +6,10 @@ from typing import Union, List, Dict, Any
 from anthropic import AsyncAnthropic
 from anthropic.resources.messages import messages
 
-from brian.util.logg import logInfo, logError
-from brian.configs.prompts import SYSTEM_CLAUDE
+from controllers.DotController import DotController
+
+from util.logg import logInfo, logError
+from configs.prompts import SYSTEM_CLAUDE
 
 class ClaudeController:
 
@@ -29,19 +31,27 @@ class ClaudeController:
         self.conversations = defaultdict(list)
 
         self.claudeClient = AsyncAnthropic(api_key=self.ANTHROPIC_API_KEY)
+        self.dotController = DotController()
 
     def messagesToClaudeContent(self, messages: Union[str, List[Dict[str, Any]]]) -> List[Dict[str, Any]]:
         """
         voodoo
         """
+
         content = []
 
-        content.append(
-                {
-                    "":"",
-                    "": messages
-                }
-        )
+        if isinstance(messages, str):
+
+            content.append(
+                    {
+                        "type":"text",
+                        "text": messages
+                    }
+            )
+
+        else:
+
+            content = [*messages] # lmao..
 
         return content
 
@@ -70,7 +80,10 @@ class ClaudeController:
         """
         msgs = []
 
-        msgs = [*self.messagesToClaudePrompt(messages)]
+        if isinstance(messages, str):
+            await self.dotController.processMessage(messages)
+
+        msgs = [*self.messagesToClaudePrompt(messages)] # lawd for:give me
 
         for attempt in range(self.MAX_RETRIES):
 

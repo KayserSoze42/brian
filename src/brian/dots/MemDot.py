@@ -1,9 +1,14 @@
 from dataclasses import dataclass
+from typing import Dict, List
 
 @dataclass
 class MemDot:
 
-    tags: None # basic idea.. let spacy tag stuff, and then weight them by context
+    ents: List[str]# basic idea.. let spacy tag stuff, and then weight them by context
+    
+    structDots: Dict[str, str]
+
+    summas: List[str]
 
     # bam
 

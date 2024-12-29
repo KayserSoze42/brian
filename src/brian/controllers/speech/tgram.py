@@ -11,15 +11,15 @@ from aiogram.filters.command import Command
 from aiogram.enums import ChatAction
 from aiogram.exceptions import TelegramAPIError
 
-from ...util import logg
+from util import logg
 
-from ..cloud import ClaudeController, GrokController
+from controllers.cloud import ClaudeController, GrokController
 
-TELEGRAM_BOT_TOKEN = getenv("TELEGRAM-BOT-TOKEN")
+TELEGRAM_BOT_TOKEN = getenv("TELEGRAM_BOT_TOKEN")
 
 if not TELEGRAM_BOT_TOKEN:
     logg.logError("error getting the telegram key from ev")
-    raise
+    raise # raise?? raise what, glasses? lol
 
 MAX_RETRIES = 3
 RETRY_DELAY = 1

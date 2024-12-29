@@ -5,8 +5,8 @@ from typing import Union, List, Dict, Any
 
 from anthropic import AsyncAnthropic
 
-from brian.util.logg import logInfo, logError
-from brian.configs.prompts import SYSTEM_GROK
+from util.logg import logInfo, logError
+from configs.prompts import SYSTEM_GROK
 
 class GrokController:
 
