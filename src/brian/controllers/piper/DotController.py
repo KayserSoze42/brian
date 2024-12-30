@@ -1,12 +1,15 @@
 from typing import List
 
 import spacy
-nlp = spacy.load("en_core_web_sm")
+nlp = spacy.load("en_core_web_lg")
 
 from util.logg import logInfo, logError
 
 class DotController:
 
+    # basic processes will be here, but exposed to Piper
+
+    # found out about spacy KB, will do groclaCy KB
     def __init__(self):
         logInfo("just Nothing rn => idk")
 
