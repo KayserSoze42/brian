@@ -1,3 +1,3 @@
-from .DotController import DotController
+from .piper.DotController import DotController
 
 __all__ = ["DotController"]

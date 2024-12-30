@@ -6,7 +6,7 @@ from typing import Union, List, Dict, Any
 from anthropic import AsyncAnthropic
 from anthropic.resources.messages import messages
 
-from controllers.DotController import DotController
+from controllers.piper.DotController import DotController
 
 from util.logg import logInfo, logError
 from configs.prompts import SYSTEM_CLAUDE
@@ -97,6 +97,8 @@ class ClaudeController:
                         )
 
                 claudeResponse = ""
+
+                logInfo("cLaUdE's response:\n" + str(response))
 
                 for content in response.content:
                     if hasattr(content, 'type') and content.type == 'text':
