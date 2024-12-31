@@ -1,6 +1,6 @@
 import asyncio
 
-from controllers.piper import PiperController, InputValStage
+from controllers.piper import setupBasicPiperPipe
 from controllers.speech import tgram
 
 if __name__ == "__main__":
@@ -11,9 +11,7 @@ if __name__ == "__main__":
 
     # leave the mouse-ah
 
-    piperController = PiperController()
-
-    piperController.addStage(InputValStage())
+    piperPipe = setupBasicPiperPipe()
 
     # tgram init and run
 

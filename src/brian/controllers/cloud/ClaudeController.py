@@ -33,6 +33,8 @@ class ClaudeController:
         self.claudeClient = AsyncAnthropic(api_key=self.ANTHROPIC_API_KEY)
         self.dotController = DotController()
 
+    # util funcs
+
     def messagesToClaudeContent(self, messages: Union[str, List[Dict[str, Any]]]) -> List[Dict[str, Any]]:
         """
         voodoo
@@ -71,6 +73,7 @@ class ClaudeController:
 
         return prompt
 
+    # voodoo funcs
 
     async def getClouderer(self, messages: Union[str, List[Dict[str, Any]]]) -> str:
         """

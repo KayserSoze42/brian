@@ -1,4 +1,5 @@
 from .DotController import DotController
-from .PiperController import InputValStage, PiperController
+from .PiperController import PiperController
+from .PiperPipes import setupBasicPiperPipe
 
-__all__ = ["DotController", "PiperController", "InputValStage"]
+__all__ = ["DotController", "PiperController", "setupBasicPiperPipe"]
